@@ -11,12 +11,18 @@ const categories = [
   { name: "technology", text: "기술" },
 ];
 
-const Categories = () => {
+const Categories = ({ onSelect, category }) => {
   return (
     <div className="Categories">
       {categories.map((cate, index) => {
         return (
-          <div className="cate on" key={index}>
+          <div
+            className={category == cate.name ? "cate on" : "cate"}
+            key={index}
+            onClick={() => {
+              onSelect(cate.name);
+            }}
+          >
             {cate.text}
           </div>
         );
